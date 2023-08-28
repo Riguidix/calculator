@@ -94,16 +94,11 @@ function ButtonLayout() {
             {
                 key: 'zero',
                 label: '0',
-                style : 'text-white rounded-bl-lg'
+                style : 'text-white rounded-bl-lg col-span-2'
             },
             {
                 key: 'comma',
                 label: ',',
-                style : 'text-white'
-            },
-            {
-                key: 'left',
-                label: '<',
                 style : 'text-white'
             },
             {
@@ -123,7 +118,7 @@ function ButtonLayout() {
                             { 
                                 button.map((item, index) => {
                                     return (
-                                        <Button key={ item.key } label={ item.label } style={ item.style } />
+                                        <Button value={ item.key } label={ item.label } style={ item.style } />
                                     )
                                 }) 
                             }
