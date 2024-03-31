@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { incrementActualValue, clearActual, setActual } from '../features/actual/actualSlice';
+import { incrementActualValue, clearActual } from '../features/actual/actualSlice';
 import { incrementHistory, clearHistory } from '../features/history/historySlice';
 import { setSign, clearSign} from '../features/sign/signSlice';
 import { setAns, clearAns } from '../features/ans/ansSlice';
@@ -40,24 +40,24 @@ function Button(props) {
 
                 dispatch(setSign(props.label));
 
-                switch (sign) {
+                switch (sign) { // Parse INT destroys the app
                     case '+ / -':
-                        dispatch(setOldValue(parseInt(oldValue) * -1));
+                        dispatch(setOldValue(parseFloat(oldValue) * -1));
                         break;
                     case '/':
-                        dispatch(setOldValue(parseInt(oldValue) / parseInt(actual)));
+                        dispatch(setOldValue(parseFloat(oldValue) / parseFloat(actual)));
                         break;
                     case 'X':
-                        dispatch(setOldValue(parseInt(oldValue) * parseInt(actual)));
+                        dispatch(setOldValue(parseFloat(oldValue) * parseFloat(actual)));
                         break;
                     case '-':
-                        dispatch(setOldValue(parseInt(oldValue) - parseInt(actual)));
+                        dispatch(setOldValue(parseFloat(oldValue) - parseFloat(actual)));
                         break;
                     case '+':
-                        dispatch(setOldValue(parseInt(oldValue) + parseInt(actual)));
+                        dispatch(setOldValue(parseFloat(oldValue) + parseFloat(actual)));
                         break;
                     case '=':
-                        dispatch(setAns(parseInt(oldValue)));
+                        dispatch(setAns(parseFloat(oldValue)));
                         break;
                     default:
                         dispatch(setOldValue(actual));

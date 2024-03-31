@@ -10,7 +10,7 @@ export const actualSlice = createSlice({
     reducers: {
         incrementActualValue: (state, action) => {
             if (state.value === 0) {
-                state.value += parseInt(action.payload);
+                state.value += parseFloat(action.payload); // TODO: This Parse Int destroys the decimals and divisions
             } else {
                 state.value += action.payload;
             }        
